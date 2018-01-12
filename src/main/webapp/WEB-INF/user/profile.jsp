@@ -24,7 +24,7 @@
     <div class="row">
         <div class="list-group col-xs-12 col-sm-6">
             <a href="/ads/create" class="list-group-item">Create a New Adlisting</a>
-            <a href="/profile/update" class="list-group-item">Update Your Profile</a>
+            <a href="/user/profile/update" class="list-group-item">Update Your Profile</a>
         </div>
 
         <div class="list-group col-xs-12 col-sm-6">
