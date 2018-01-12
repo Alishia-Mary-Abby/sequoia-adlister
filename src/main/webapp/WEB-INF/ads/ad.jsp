@@ -16,6 +16,7 @@
         <h3>${ad.title}</h3>
             <h5>Price: $${ad.price} </h5>
             <h5>Description: ${ad.description} </h5>
+            <%--<a href="">${ad_category.category}</a>--%>
             <p>User: ${user.username}</p>
             <a href="/ads/edit?id=${ad.id}"><input type="button" value="Edit"/></a>
     </div>
