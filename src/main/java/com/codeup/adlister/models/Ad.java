@@ -1,24 +1,48 @@
 package com.codeup.adlister.models;
 
+import java.util.List;
+
 public class Ad {
     private long id;
     private long userId;
-    private String img_name;
+    private String imgName;
     private String title;
     private String description;
-    private int price;
+    private long price;
+    private User user;
+    private List<Category> categories;
 
-    public Ad(long id, String username, String title, String description, int price) {
+    public Ad(long id, long userId, String imgName, String title, String description, long price, User user, List<Category> categories) {
+        this.id = id;
+        this.userId = userId;
+        this.imgName = imgName;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.user = user;
+        this.categories = categories;
+    }
+
+    public Ad(long id, String username, String title, String description, long price) {
         this.userId = id;
         this.title = title;
         this.description = description;
         this.price = price;
     }
 
-    public Ad(long id, long userId, String img_name, String title, String description, int price) {
+    public Ad(long id, long userId, String imgName, String title, String description, long price) {
         this.id = id;
         this.userId = userId;
-        this.img_name = img_name;
+        this.imgName = imgName;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+    }
+
+    public Ad(long id, User user, String imgName, String title, String description, long price) {
+        this.id = id;
+        this.user = user;
+        this.imgName = imgName;
         this.title = title;
         this.description = description;
         this.price = price;
@@ -40,6 +64,14 @@ public class Ad {
         this.userId = userId;
     }
 
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -56,10 +88,26 @@ public class Ad {
         this.description = description;
     }
 
-    public int getPrice() { return price; }
+    public long getPrice() { return price; }
 
-    public void setPrice(int price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 
- }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+}

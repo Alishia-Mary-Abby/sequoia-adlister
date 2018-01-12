@@ -38,7 +38,7 @@ public class EditAdServlet extends HttpServlet {
 
         String title = request.getParameter("title");
         String description = request.getParameter("description");
-        Integer price = Integer.parseInt(request.getParameter("price"));
+        Long price = Long.parseLong(request.getParameter("price"));
 //        long id = (long) request.getParameter("id");
 
         Ad ad = DaoFactory.getAdsDao().ViewAd(Long.parseLong(request.getParameter("id")));

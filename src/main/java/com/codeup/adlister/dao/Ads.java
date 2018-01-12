@@ -20,4 +20,6 @@ public interface Ads {
     List<Ad> search(String searchAd);
 
     List<Ad> showAds(long id);
+
+    Object findAdsByCategory(Long categoryId);
 }

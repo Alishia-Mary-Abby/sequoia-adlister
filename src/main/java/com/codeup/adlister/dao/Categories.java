@@ -1,13 +1,15 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Category;
+
 import java.util.List;
 
 public interface Categories {
     // get a list of all the categories from db
-    List<String> getCategories();
+    List<Category> getCategories();
 
     // getCategoryForAd( ) by the ad id or ad object
-
+    List<Category> getCategoriesForAd(long adId);
 
     // FINISHING CATEGORY WORK //
     //
