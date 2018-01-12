@@ -17,7 +17,7 @@
             <form action="/user/register" class="form-group loginform" id="user-form" method="POST">
 
                     <label for="usrname">Username</label>
-                    <input type="text" id="usrname" name="usrname" required>
+                    <input type="text" id="usrname" name="username" required>
                 <br>
 
 
@@ -27,7 +27,7 @@
 
 
                     <label for="psw">Password</label>
-                    <input type="password" id="psw" name="psw"
+                    <input type="password" id="psw" name="password"
                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                            title="Must contain at least one number
                                and one uppercase and lowercase letter,
