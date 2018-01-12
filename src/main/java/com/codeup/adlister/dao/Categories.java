@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Categories {
     // get a list of all the categories from db
-    List<Category> getCategories();
+    List<Category> getAllCategories();
 
     // getCategoryForAd( ) by the ad id or ad object
     List<Category> getCategoriesForAd(long adId);

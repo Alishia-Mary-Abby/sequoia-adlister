@@ -39,11 +39,11 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user_id, title, imgName, description, price) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(user_id, imgName, title, description, price) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
-            stmt.setString(3, ad.getImgName());
+            stmt.setString(2, ad.getImgName());
+            stmt.setString(3, ad.getTitle());
             stmt.setString(4, ad.getDescription());
             stmt.setLong(5, ad.getPrice());
             stmt.executeUpdate();
@@ -54,7 +54,8 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error - creating a new ad.", e);
         }
     }
-//          -----Method to View One Specific Ad----
+
+    //          -----Method to View One Specific Ad----
     @Override
     public Ad ViewAd(long id) {
         String query = "SELECT * FROM ads WHERE id = ?";
@@ -117,21 +118,35 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-//          ---------Method to Update Ad---------
+    //          ---------Method to Update Ad---------
     @Override
 //    public void editAd(String title, String description, Long price, long id) {
     public void editAd(Ad ad) {
-        String query = "UPDATE ads SET title = ?, description = ?, price = ? WHERE id = ?";
+        String query = "UPDATE ads SET imgName = ?, title = ?, description = ?, price = ? WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1, ad.getTitle());
-            stmt.setString(2, ad.getDescription());
-            stmt.setLong(3, ad.getPrice());
-            stmt.setLong(4, ad.getId());
+            stmt.setString(1, ad.getImgName());
+            stmt.setString(2, ad.getTitle());
+            stmt.setString(3, ad.getDescription());
+            stmt.setLong(4, ad.getPrice());
+            stmt.setLong(5, ad.getId());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException("Error, unable to edit your ad.", e);
+        }
+    }
+
+    @Override
+    public List<Ad> showAdsByUser(long id) {
+        String query = "SELECT * FROM ads where ads.user_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving adds by user.", e);
         }
     }
 
@@ -167,6 +182,19 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error, unable to view user ad", e);
         }
     }
+
+    @Override
+    public void deleteAd(Long id) {
+        String query = "DELETE FROM ads WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error, unable to delete ad", e);
+        }
+    }
+
 
 }
 

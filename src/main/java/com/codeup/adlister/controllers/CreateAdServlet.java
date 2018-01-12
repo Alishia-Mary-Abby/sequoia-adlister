@@ -16,7 +16,7 @@ import java.util.List;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("categories", DaoFactory.getCategoriesDAO().getCategories());
+        request.setAttribute("categories", DaoFactory.getCategoriesDAO().getAllCategories());
 
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/user/login");
@@ -37,9 +37,8 @@ public class CreateAdServlet extends HttpServlet {
             return;
         }
 
-        // Brings in categories list for create.jsp
-        List<String> categories = DaoFactory.getCategoriesDAO().getCategories();
-        request.setAttribute("categories", categories);
+        request.setAttribute("categories", DaoFactory.getCategoriesDAO().getAllCategories());
+        request.getRequestDispatcher("/WEB-INF/ads-create.jsp").forward(request, response);
 
 //        // make array with category elements
 //        String[] categories = request.getParameterValues("categories");

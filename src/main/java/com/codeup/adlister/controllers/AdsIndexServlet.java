@@ -19,14 +19,14 @@ public class AdsIndexServlet extends HttpServlet {
 
         List<Ad> allAds = DaoFactory.getAdsDao().all();
 
-        for (Ad ad: allAds){
-            List<Category> categoriesForThisAd = DaoFactory.getCategoriesDAO().getCategoriesForAd.getId();
-            ad.setCategories(cateogoriesForThisAd);
+        for (Ad ad : allAds){
+            List<Category> categoriesForThisAd = DaoFactory.getCategoriesDAO().getCategoriesForAd(ad.getId());
+            ad.setCategories(categoriesForThisAd);
         }
 
 
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        request.setAttribute("categories", DaoFactory.getCategoriesDAO().getCategories());
+        request.setAttribute("categories", DaoFactory.getCategoriesDAO().getAllCategories());
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 }

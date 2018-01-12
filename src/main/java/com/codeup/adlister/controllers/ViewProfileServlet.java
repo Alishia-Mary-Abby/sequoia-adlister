@@ -23,7 +23,7 @@ public class ViewProfileServlet extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
 
-        List<Ad> allAdsForThisUser = DaoFactory.getCategoriesDAO().getCategoriesForAd(user.getId));
+        List<Ad> allAdsForThisUser = DaoFactory.getAdsDao().showAdsByUser(user.getId());
 
         for (Ad ad: allAdsForThisUser) {
             List<Category> categoriesForThisAd = DaoFactory.getCategoriesDAO().getCategoriesForAd(ad.getId());

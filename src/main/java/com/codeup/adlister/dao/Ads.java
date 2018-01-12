@@ -23,8 +23,9 @@ public interface Ads {
 //    Object findAdsByCategory(Long categoryId);
     List<Ad> findAdsByCategory(Long id);
 
+    List<Ad> showAdsByUser(long id);
 
-
+    void deleteAd(Long id);
 
 
 
