@@ -14,7 +14,7 @@
 
         <div class="container">
 
-            <form action="/register" class="form-group loginform" id="user-form" method="POST">
+            <form action="/user/register" class="form-group loginform" id="user-form" method="POST">
 
                     <label for="usrname">Username</label>
                     <input type="text" id="usrname" name="usrname" required>

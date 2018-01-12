@@ -19,7 +19,7 @@ public class CreateAdServlet extends HttpServlet {
         request.setAttribute("categories", DaoFactory.getCategoriesDAO().getCategories());
 
         if (request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("/login");
+            response.sendRedirect("/user/login");
             return;
         }
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
@@ -33,7 +33,7 @@ public class CreateAdServlet extends HttpServlet {
         System.out.println(request.getSession().getAttribute("user"));
 
         if(request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("/login");
+            response.sendRedirect("/user/login");
             return;
         }
 
