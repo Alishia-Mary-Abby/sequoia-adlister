@@ -13,7 +13,7 @@ package com.codeup.adlister.controllers;
         import java.io.IOException;
         import java.util.HashMap;
 
-@WebServlet(name = "UpdateProfileServlet", urlPatterns = "/profile/update")
+@WebServlet(name = "UpdateProfileServlet", urlPatterns = "/user/profile/update")
 public class UpdateProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -76,7 +76,7 @@ public class UpdateProfileServlet extends HttpServlet {
 
             DaoFactory.getUsersDao().update(user);
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/profile");
+            response.sendRedirect("/user/profile");
         }
 
     }
@@ -88,7 +88,7 @@ public class UpdateProfileServlet extends HttpServlet {
         User userDb = DaoFactory.getUsersDao().findByUsername(user.getUsername());
 
         if (user == null) {
-            response.sendRedirect("/login");
+            response.sendRedirect("/user/login");
         }
         // Passing to the view
         request.setAttribute("user", userDb);
